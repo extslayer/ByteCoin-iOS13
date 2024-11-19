@@ -10,6 +10,19 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     var coinManager = CoinManager()
+    
+    
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var bitcoinLabel: UILabel!
+    @IBOutlet weak var currencyPicker: UIPickerView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        currencyPicker.dataSource = self
+        currencyPicker.delegate = self
+        // Do any additional setup after loading the view.
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -22,15 +35,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return coinManager.currencyArray[row]
     }
     
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var bitcoinLabel: UILabel!
-    @IBOutlet weak var currencyPicker: UIPickerView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        currencyPicker.dataSource = self
-        currencyPicker.delegate = self
-        // Do any additional setup after loading the view.
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(coinManager.currencyArray[row])
     }
 
 
