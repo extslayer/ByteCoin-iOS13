@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct CoinModel: Codable {
+    let assestBase: String
+    let assetQuote: String
+    let rate: Double
+}
